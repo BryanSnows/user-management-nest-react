@@ -40,7 +40,6 @@ export function Routes() {
             </Route>
           </Route>
         </Route>
-        {/* <Route path="*" element={<NotFound />} /> */}
       </RoutesWrapper>
     </>
   );
