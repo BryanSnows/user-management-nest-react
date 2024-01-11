@@ -14,7 +14,7 @@ export function isAllowedTransaction(transactionNumbers?: number[]): boolean {
 
   const decoded_access_token = getDecodedToken();
 
-  if (decoded_access_token?.profile_id === 0) {
+  if (decoded_access_token?.profile_id === 1) {
     return true;
   }
 

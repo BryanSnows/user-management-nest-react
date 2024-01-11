@@ -125,8 +125,8 @@ export class AuthService {
     };
   }
 
-  async removeRefreshToken(id: number): Promise<any> {
-    const user = await this.userService.findById(id);
+  async removeRefreshToken(email: string): Promise<any> {
+    const user = await this.userService.findByEmail(email);
 
     if (!user) {
       throw new HttpException(

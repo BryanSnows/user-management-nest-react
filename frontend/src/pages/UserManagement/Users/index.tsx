@@ -15,7 +15,6 @@ import { Table } from '../../../components/Tables/Table';
 
 export function Users() {
   const { addToast } = useContext(ToastContext);
-
   const [user, setUser] = useState<IUserTableRow>();
   const [searchParam, setSearchParam] = useState('');
   const [pageParam, setPageParam] = useState(1);
@@ -23,7 +22,6 @@ export function Users() {
   const [modalEditUser, setModalEditUser] = useState(false);
   const [modalActiveUser, setModalActiveUser] = useState(false);
   const [statusMessage, setStatusMessage] = useState<boolean | undefined>(true);
-
   const canCreateUser = isAllowedTransaction(UserTransaction.CREATE);
   const canEditUser = isAllowedTransaction(UserTransaction.UPDATE);
   const canActivateUser = isAllowedTransaction(UserTransaction.CHANGE_STATUS);
@@ -37,8 +35,6 @@ export function Users() {
       params.append('limit', '10');
       params.append('orderBy', 'NAME');
       params.append('sort', 'ASC');
-      params.append('user_status', String(onOff === true ? 1 : 0));
-
       return Api.get('users', { params });
     },
     {
@@ -56,7 +52,6 @@ export function Users() {
       user_email: item?.user_email,
       user_name: item?.user_name,
       user_profile: item?.profile_name,
-      status: item?.user_status,
       user_id: item?.user_id,
     };
   });
