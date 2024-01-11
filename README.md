@@ -6,7 +6,7 @@ Este projeto é uma aplicação de gerenciamento de usuários construída com Ne
 
 Para executar o backend, você precisará ter o Docker e o Docker Compose instalados em seu sistema. Se você ainda não os tiver instalado, pode seguir as instruções na documentação oficial do Docker [aqui](https://docs.docker.com/get-docker/) e do Docker Compose [aqui](https://docs.docker.com/compose/install/).
 
-Depois de instalar o Docker e o Docker Compose, navegue até a pasta do projeto no terminal e execute o seguinte comando:
+Depois de instalar o Docker e o Docker Compose, navegue até a pasta do projeto no terminal e execute o seguinte comando: docker-compose up
 
 
 Isso irá construir e iniciar os contêineres do Docker definidos no arquivo `docker-compose.yml`.
@@ -15,10 +15,10 @@ O Swagger UI para a API do backend pode ser acessado através do seguinte link: 
 
 ## Frontend (ReactJS)
 
-Para iniciar o frontend, primeiro você precisará instalar as dependências do projeto. Navegue até a pasta do frontend no terminal e execute o seguinte comando:
+Para iniciar o frontend, primeiro você precisará instalar as dependências do projeto. Navegue até a pasta do frontend no terminal e execute o seguinte comando: yarn install
 
 
-Depois de instalar as dependências, você pode iniciar o servidor de desenvolvimento com o seguinte comando:
+Depois de instalar as dependências, você pode iniciar o servidor de desenvolvimento com o seguinte comando: yarn start
 
 Agora você deve ser capaz de acessar a aplicação no navegador em [http://localhost:3000](http://localhost:3000).
 
