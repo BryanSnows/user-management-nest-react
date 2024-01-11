@@ -19,18 +19,11 @@ import {
   TitleBox,
 } from './styles';
 import {
-  FiGrid as DashboardIcon,
-  FiLayout as MachineMonitoringIcon,
   FiUsers as UsersIcon,
   FiChevronLeft as LeftIcon,
   FiChevronRight as RightIcon,
-  FiUserCheck as ControlIcon,
-  FiBarChart2 as ProductivityIcon,
 } from 'react-icons/fi';
-import { LuFileLineChart as ChartIcon } from 'react-icons/lu';
-import { FaArrowTrendUp as GoalIcon } from 'react-icons/fa6';
 import logoMenuClosed from '../../assets/images/logo-menu-closed.png';
-import logoMenu from '../../assets/images/logo_sidebar_elgin.png';
 import { useAuthGlobal } from '../../context/AuthProvider/useAuthGlobal';
 import { NavLink } from 'react-router-dom';
 import { Header2 } from '../../styles/typography';
@@ -112,7 +105,7 @@ export function Layout({ children }: LayoutProps) {
           }
         }}
         title="Sair do Sistema"
-        message="Deseja sair do sistema CNC?"
+        message="Deseja sair do software ?"
       />
 
       <Container>
@@ -130,7 +123,7 @@ export function Layout({ children }: LayoutProps) {
           <Header>
             <LogoBox>
               <img
-                src={isOpen ? logoMenu : logoMenuClosed}
+                src={isOpen ? logoMenuClosed : logoMenuClosed}
                 alt="Logo"
                 aria-hidden="true"
                 onClick={toggleSidebar}
@@ -273,7 +266,6 @@ export function Layout({ children }: LayoutProps) {
             width: isOpen ? '93%' : '94%',
           }}
         >
-          {/* <div className="translate"><LanguageSwitcher /></div> */}
           <ChildrenContainer>
             <TitleBox>
               <Header2 fontColor={theme.typography.darkGray}>{actualPage}</Header2>
