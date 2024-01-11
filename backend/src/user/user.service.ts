@@ -44,6 +44,7 @@ export class UserService {
     return this.userRepository
       .createQueryBuilder('user')
       .leftJoinAndSelect('user.profile', 'profile')
+      .leftJoinAndSelect('profile.transactions', 'transactions')
       .where('user.user_email = :user_email', { user_email: email })
       .getOne();
   }
@@ -310,8 +311,6 @@ export class UserService {
     return this.userRepository
       .createQueryBuilder('user')
       .leftJoinAndSelect('user.profile', 'profile')
-      .leftJoinAndSelect('user.office', 'office')
-      .leftJoinAndSelect('user.shift', 'shift')
       .where('user.user_id = :user_id', { user_id: id })
       .getOne();
   }

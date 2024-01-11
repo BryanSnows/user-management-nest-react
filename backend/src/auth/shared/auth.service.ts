@@ -1,10 +1,8 @@
 import {
-  BadRequestException,
   HttpException,
   HttpStatus,
   Injectable,
   NotFoundException,
-  UnauthorizedException,
 } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { UserService } from 'src/user/user.service';
@@ -12,8 +10,6 @@ import { LoginDTO } from '../dto/login.dto';
 import { ConfigService } from '@nestjs/config';
 import { hash, isMatchHash } from 'src/common/hash';
 import Tokens from '../interfaces/tokens';
-import { Validations } from 'src/common/validations';
-import { ValidType } from 'src/common/Enums';
 
 @Injectable()
 export class AuthService {
@@ -60,7 +56,6 @@ export class AuthService {
       userSaved.user_id,
       await hash(refresh_token),
     );
-
     return {
       name: userSaved.user_name,
       sobrenome: userSaved.user_surname,
