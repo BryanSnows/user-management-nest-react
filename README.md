@@ -1,54 +1,36 @@
-# User Management Project
+# User Management Project - NestJS & ReactJS
 
-Este projeto é um sistema de gerenciamento de usuários desenvolvido com NestJS (backend) e ReactJS (frontend). Siga as instruções abaixo para executar o projeto localmente.
+Este projeto é uma aplicação de gerenciamento de usuários construída com NestJS para o backend e ReactJS para o frontend. O projeto utiliza Docker Compose para executar o backend e o comando `yarn start` para iniciar o frontend.
 
 ## Backend (NestJS)
 
-### Configurações do PostgreSQL
+Para executar o backend, você precisará ter o Docker e o Docker Compose instalados em seu sistema. Se você ainda não os tiver instalado, pode seguir as instruções na documentação oficial do Docker [aqui](https://docs.docker.com/get-docker/) e do Docker Compose [aqui](https://docs.docker.com/compose/install/).
 
-Crie um arquivo `.env` no diretório `backend` com as seguintes configurações para o PostgreSQL:
-
-```env
-DB_TYPE=postgres
-DB_HOST=localhost
-DB_PORT=5432
-DB_USERNAME=postgres
-DB_PASSWORD=3663
-DB_DATABASE=postgres
+Depois de instalar o Docker e o Docker Compose, navegue até a pasta do projeto no terminal e execute o seguinte comando:
 
 
-Instruções de Execução
-bash
-Copy code
-cd backend
-docker-compose up
+Isso irá construir e iniciar os contêineres do Docker definidos no arquivo `docker-compose.yml`.
+
+O Swagger UI para a API do backend pode ser acessado através do seguinte link: [http://localhost:3002/swagger/#/](http://localhost:3002/swagger/#/)
+
+## Frontend (ReactJS)
+
+Para iniciar o frontend, primeiro você precisará instalar as dependências do projeto. Navegue até a pasta do frontend no terminal e execute o seguinte comando:
 
 
-# O backend estará disponível em http://localhost:3002.
+Depois de instalar as dependências, você pode iniciar o servidor de desenvolvimento com o seguinte comando:
 
-#O Swagger estará disponível em http://localhost:3002/swagger/#/.
+Agora você deve ser capaz de acessar a aplicação no navegador em [http://localhost:3000](http://localhost:3000).
 
-Credenciais de Admin
-Email: bryan@email.com
-Senha: 36638947
-SQL Schema
-O arquivo SQL do esquema de dados está localizado em backend/src/config/database/schema.sql.
+## Login de Admin
 
-Frontend (ReactJS)
-Requisitos
-Certifique-se de ter o Node.js e o Yarn instalados em seu ambiente.
+O login de administrador é:
 
-Instruções de Execução
+- Email: bryan@email.com
+- Senha: 36638947
 
-bash
-Copy code
-cd frontend
-yarn install
-yarn start
+## Banco de Dados (PostgreSQL)
 
-#O frontend estará disponível em http://localhost:3000.
+Este projeto utiliza PostgreSQL como banco de dados. O esquema SQL do banco de dados está localizado na pasta `src/config/database` do projeto backend, no arquivo `schema.sql`.
 
-#Agora você pode acessar e interagir com o sistema de gerenciamento de usuários.
-
-##Observação: Certifique-se de ter o backend em execução antes de iniciar o frontend.
-
+Espero que isso ajude! Se você tiver mais perguntas ou precisar de mais detalhes, sinta-se à vontade para perguntar.
