@@ -4,7 +4,6 @@ import { IAuthContext, IAuthProvider } from './types';
 import { getProfileLocalStorage, getTokenLocalStorage, getUserNameLocalStorage } from './utils';
 import { useNavigate } from 'react-router-dom';
 import Api from '../../services/Api';
-// import { useTranslation } from 'react-i18next';
 
 export const AuthContext = createContext<IAuthContext>({} as IAuthContext);
 

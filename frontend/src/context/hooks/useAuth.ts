@@ -23,7 +23,6 @@ export function useAuth(
       email: email,
       password: password,
     };
-
     await Api.post('auth/login', body)
       .then((response) => {
         setTokenLocalStorage(response.data.access_token);
