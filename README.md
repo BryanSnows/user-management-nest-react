@@ -1,10 +1,10 @@
 # User Management Project - NestJS & ReactJS
 
-Este projeto é uma aplicação de gerenciamento de usuários construída com NestJS para o backend e ReactJS para o frontend. O projeto utiliza Docker Compose para executar o backend e o comando `yarn start` para iniciar o frontend.
+Este projeto é uma aplicação de gerenciamento de usuários construída com NestJS para o backend e ReactJS para o frontend. O projeto utiliza Docker Compose ou o comando `yarn start` para executar o backend local e o comando `yarn start` para iniciar o frontend.
 
 ## Backend (NestJS)
 
-Para executar o backend, você precisará ter o Docker e o Docker Compose instalados em seu sistema. Se você ainda não os tiver instalado, pode seguir as instruções na documentação oficial do Docker [aqui](https://docs.docker.com/get-docker/) e do Docker Compose [aqui](https://docs.docker.com/compose/install/).
+Para executar o backend, você precisará executar o comando `yarn` para instalar as dependencias e rodar de forma local ou ter o Docker e o Docker Compose instalados em seu sistema. 
 
 Depois de instalar o Docker e o Docker Compose, navegue até a pasta do projeto no terminal e execute o seguinte comando: `docker-compose up`
 
@@ -32,5 +32,3 @@ O login de administrador é:
 ## Banco de Dados (PostgreSQL)
 
 Este projeto utiliza PostgreSQL como banco de dados. O esquema SQL do banco de dados está localizado na pasta `src/config/database` do projeto backend, no arquivo `schema.sql`.
-
-Espero que isso ajude! Se você tiver mais perguntas ou precisar de mais detalhes, sinta-se à vontade para perguntar.
