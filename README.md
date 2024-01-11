@@ -6,7 +6,7 @@ Este projeto é uma aplicação de gerenciamento de usuários construída com Ne
 
 Para executar o backend, você precisará executar o comando `npm install` para instalar as dependencias e rodar de forma local ou ter o Docker e o Docker Compose instalados em seu sistema. 
 
-Depois de instalar o Docker e o Docker Compose, navegue até a pasta do projeto no terminal e execute o seguinte comando: `docker-compose up`
+Depois de instalar o Docker e o Docker Compose, navegue até a pasta do projeto no terminal e execute os seguintes comandos: `docker-compose build` e `docker-compose up`
 
 
 Isso irá construir e iniciar os contêineres do Docker definidos no arquivo `docker-compose.yml`.
