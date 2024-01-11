@@ -25,7 +25,7 @@ import {
 } from 'react-icons/fi';
 import logoMenuClosed from '../../assets/images/logo-menu-closed.png';
 import { useAuthGlobal } from '../../context/AuthProvider/useAuthGlobal';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { Header2 } from '../../styles/typography';
 import { useTheme } from 'styled-components';
 import { ModalConfirm } from '../Modal/ModalConfirm';
@@ -40,6 +40,8 @@ export function Layout({ children }: LayoutProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [isLogoutModalOpen, setIsLogoutModalOpen] = useState(false);
   const { actualPage, menuSection, setMenuSection } = useContext(PageContext);
+
+  const navigate = useNavigate();
 
   function toggleSidebar() {
     setIsOpen(!isOpen);
@@ -100,7 +102,9 @@ export function Layout({ children }: LayoutProps) {
         handleClose={handleCloseLogoutModal}
         handleSubmit={() => {
           if (Logout) {
-            Logout();
+            //Logout();
+            navigate('/login');
+            localStorage.clear();
             handleCloseLogoutModal();
           }
         }}
@@ -122,12 +126,14 @@ export function Layout({ children }: LayoutProps) {
         >
           <Header>
             <LogoBox>
-              <img
-                src={isOpen ? logoMenuClosed : logoMenuClosed}
-                alt="Logo"
+              <h2
+                //src={isOpen ? logoMenuClosed : logoMenuClosed}
+                //alt="Logo"
                 aria-hidden="true"
                 onClick={toggleSidebar}
-              />
+              >
+                app
+              </h2>
             </LogoBox>
             <motion.div
               className="openCloseMenuBox"
