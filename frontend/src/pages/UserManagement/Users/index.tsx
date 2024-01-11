@@ -1,8 +1,7 @@
-// import { useTranslation } from 'react-i18next';
 import { useContext, useEffect, useState } from 'react';
 import { useQuery } from 'react-query';
 import { ITableHeader } from '../../../components/Tables/Table/types';
-import { IUser, IUserTableRow } from '../../../interfaces/IGlobal';
+import { IUserTableRow } from '../../../interfaces/IGlobal';
 import Api from '../../../services/Api';
 import { ModalEditUser } from './ModalEdit';
 import { ModalConfirm } from '../../../components/Modal/ModalConfirm';
@@ -15,7 +14,6 @@ import { ITableData } from './NewUser/type';
 import { Table } from '../../../components/Tables/Table';
 
 export function Users() {
-  // const { t } = useTranslation();
   const { addToast } = useContext(ToastContext);
 
   const [user, setUser] = useState<IUserTableRow>();
@@ -106,12 +104,6 @@ export function Users() {
       });
   }
 
-  function handleChangeStatus(user: IUserTableRow) {
-    setUser(user);
-    setStatusMessage(user?.status);
-    setModalActiveUser(!modalActiveUser);
-  }
-
   function handleEdit(user: IUserTableRow) {
     setUser(user);
     setModalEditUser(!modalEditUser);
@@ -166,7 +158,6 @@ export function Users() {
           headers={headers}
           data={tableData}
           enableActions
-          onChangeStatus={handleChangeStatus}
           canChangeStatus={canActivateUser}
           onEdit={handleEdit}
           canEdit={canEditUser}

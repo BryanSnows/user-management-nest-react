@@ -1,45 +1,30 @@
-import { ITextColor, ModalProps } from "./types";
-import ReactDOM from "react-dom";
-import { ModalConfirm } from "../../../components/Modal/ModalConfirm";
-import { ChangeEvent, useContext, useEffect, useState } from "react";
-import {
-  Container,
-  Overlay,
-  Text,
-  Form,
-  TextH5,
-  WrapperButton,
-} from "./styles";
-import { DefaultInput } from "../../../components/Input/DefaultInput";
-import { ButtonMain } from "../../../components/Button/ButtonMain";
-import Api from "../../../services/Api";
-import { Header5 } from "../../../styles/typography";
-import { FormGroup } from "../../../components/FormGroup";
-import { ToastContext } from "../../../context/ToastContext";
-import { useTheme } from "styled-components";
-// import { useTranslation } from 'react-i18next';
+import { ITextColor, ModalProps } from './types';
+import ReactDOM from 'react-dom';
+import { ModalConfirm } from '../../../components/Modal/ModalConfirm';
+import { ChangeEvent, useContext, useEffect, useState } from 'react';
+import { Container, Overlay, Text, Form, TextH5, WrapperButton } from './styles';
+import { DefaultInput } from '../../../components/Input/DefaultInput';
+import { ButtonMain } from '../../../components/Button/ButtonMain';
+import Api from '../../../services/Api';
+import { Header5 } from '../../../styles/typography';
+import { FormGroup } from '../../../components/FormGroup';
+import { ToastContext } from '../../../context/ToastContext';
+import { useTheme } from 'styled-components';
 
-export function ModalFirstPassword({
-  isModalActive,
-  closeModal,
-  firstPassword,
-}: ModalProps) {
-  const modalRoot = document.getElementById("modal") as HTMLElement;
+export function ModalFirstPassword({ isModalActive, closeModal, firstPassword }: ModalProps) {
+  const modalRoot = document.getElementById('modal') as HTMLElement;
   const { addToast } = useContext(ToastContext);
   const { colors: theme } = useTheme();
-  // const { t } = useTranslation();
 
-  const [newPassword, setNewPassword] = useState<string>("");
-  const [errorMessage, setErrorMessage] = useState<string | undefined>(
-    undefined
-  );
-  const [repeatPassword, setRepeatPassword] = useState<string>("");
+  const [newPassword, setNewPassword] = useState<string>('');
+  const [errorMessage, setErrorMessage] = useState<string | undefined>(undefined);
+  const [repeatPassword, setRepeatPassword] = useState<string>('');
   const [isModalConfirmOpen, setIsModalConfirmOpen] = useState(false);
   const [textColor, setTextColor] = useState<ITextColor>({
-    characters: "",
-    minLetter: "",
-    minNumber: "",
-    minCharactersSpecial: "",
+    characters: '',
+    minLetter: '',
+    minNumber: '',
+    minCharactersSpecial: '',
   });
 
   const [showPassword, setShowPassword] = useState<boolean>(false);
@@ -48,11 +33,9 @@ export function ModalFirstPassword({
 
   useEffect(() => {
     if (repeatPassword) {
-      repeatPassword !== newPassword
-        ? setErrorMessage("Senhas não conferem")
-        : setErrorMessage("");
+      repeatPassword !== newPassword ? setErrorMessage('Senhas não conferem') : setErrorMessage('');
     } else {
-      setErrorMessage("");
+      setErrorMessage('');
     }
   }, [repeatPassword, newPassword]);
 
@@ -98,43 +81,43 @@ export function ModalFirstPassword({
       confirmation_password: repeatPassword,
     };
 
-    await Api.post("auth/first_access", body)
+    await Api.post('auth/first_access', body)
       .then(() => {
-        addToast({ status: "success", title: "Senha Cadastrada com sucesso" });
+        addToast({ status: 'success', title: 'Senha Cadastrada com sucesso' });
         handleCloseModal();
-        setNewPassword("");
-        setRepeatPassword("");
+        setNewPassword('');
+        setRepeatPassword('');
         setTextColor(() => ({
-          characters: "",
-          minLetter: "",
-          minNumber: "",
-          minCharactersSpecial: "",
+          characters: '',
+          minLetter: '',
+          minNumber: '',
+          minCharactersSpecial: '',
         }));
-        localStorage.removeItem("first_acc");
+        localStorage.removeItem('first_acc');
       })
       .catch(() => {
-        setNewPassword("");
-        setRepeatPassword("");
+        setNewPassword('');
+        setRepeatPassword('');
         setTextColor(() => ({
-          characters: "",
-          minLetter: "",
-          minNumber: "",
-          minCharactersSpecial: "",
+          characters: '',
+          minLetter: '',
+          minNumber: '',
+          minCharactersSpecial: '',
         }));
       });
   }
 
   function handleNewPassword(event: ChangeEvent<HTMLInputElement>) {
-    const value = event.target.value.replace(/\s/g, "");
+    const value = event.target.value.replace(/\s/g, '');
 
     setNewPassword(value);
 
     if (value.length === 0) {
       setTextColor(() => ({
-        characters: "",
-        minLetter: "",
-        minNumber: "",
-        minCharactersSpecial: "",
+        characters: '',
+        minLetter: '',
+        minNumber: '',
+        minCharactersSpecial: '',
       }));
     } else if (value.length < 6) {
       setTextColor(() => ({
@@ -173,7 +156,7 @@ export function ModalFirstPassword({
   }
 
   function handleRepeatPassword(event: ChangeEvent<HTMLInputElement>) {
-    const value = event.target.value.replace(/\s/g, "");
+    const value = event.target.value.replace(/\s/g, '');
 
     setRepeatPassword(value);
   }
@@ -186,30 +169,13 @@ export function ModalFirstPassword({
         handleClose={handleCloseModal}
       />
       <Container>
-        {/* <button
-            className="close-icon"
-            onClick={() => {
-              setIsModalConfirmOpen(true);
-              setNewPassword("");
-              setRepeatPassword("");
-              setTextColor(() => ({
-                characters: "",
-                minNumber: "",
-                minCharactersSpecial: "",
-              }));
-            }}
-          >
-            &#10006;
-          </button> */}
-        <Header5>{"Atualizar Senha"}</Header5>
+        <Header5>{'Atualizar Senha'}</Header5>
         <Text>
-          <TextH5>{"A sua nova senha deverá possuir:"}</TextH5>
-          <TextH5 color={textColor.characters}>{"Mín. 6 e Máx. 12"}</TextH5>
-          <TextH5 color={textColor.minLetter}>{"Mín. 1 Letra"}</TextH5>
-          <TextH5 color={textColor.minNumber}>{"Mín. 1 Número"}</TextH5>
-          <TextH5 color={textColor.minCharactersSpecial}>
-            {"Mín. 1 Caractere Especial"}
-          </TextH5>
+          <TextH5>{'A sua nova senha deverá possuir:'}</TextH5>
+          <TextH5 color={textColor.characters}>{'Mín. 6 e Máx. 12'}</TextH5>
+          <TextH5 color={textColor.minLetter}>{'Mín. 1 Letra'}</TextH5>
+          <TextH5 color={textColor.minNumber}>{'Mín. 1 Número'}</TextH5>
+          <TextH5 color={textColor.minCharactersSpecial}>{'Mín. 1 Caractere Especial'}</TextH5>
         </Text>
 
         <Form onSubmit={handleSubmit}>
@@ -217,10 +183,9 @@ export function ModalFirstPassword({
             <DefaultInput
               width="100%"
               height="90px"
-              // type="password"
               name="password"
               placeholder="Inserir nova senha"
-              label={"Nova Senha"}
+              label={'Nova Senha'}
               id="NovaSenha"
               autoComplete="off"
               toggleShowPassword={handleShowPassword}
@@ -231,14 +196,13 @@ export function ModalFirstPassword({
             />
           </FormGroup>
 
-          <FormGroup error={errorMessage} extraErrorMessage={[""]}>
+          <FormGroup error={errorMessage} extraErrorMessage={['']}>
             <DefaultInput
               width="100%"
               height="78px"
               name="passwordConfirm"
               placeholder="Inserir novamente nova senha"
-              // type="password"
-              label={"Confirmar Senha"}
+              label={'Confirmar Senha'}
               id="ConfirmarSenha"
               autoComplete="off"
               toggleShowPassword={handleConfirmPassword}
@@ -251,7 +215,7 @@ export function ModalFirstPassword({
 
           <WrapperButton>
             <ButtonMain
-              label={"Salvar"}
+              label={'Salvar'}
               type="submit"
               width="50%"
               height="60px"
@@ -261,6 +225,6 @@ export function ModalFirstPassword({
         </Form>
       </Container>
     </Overlay>,
-    modalRoot
+    modalRoot,
   );
 }

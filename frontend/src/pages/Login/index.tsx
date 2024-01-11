@@ -1,21 +1,17 @@
 import React, { ChangeEvent, useContext, useEffect, useMemo, useState } from 'react';
 import { Banner, BoxLogin, Container, ContainerLogin, Form, WelcomeText } from './styles';
 import banner from '../../assets/images/banner.svg';
-import elgin from '../../assets/images/elgin.png';
 import { ButtonMain } from '../../components/Button/ButtonMain';
 import { useAuthGlobal } from '../../context/AuthProvider/useAuthGlobal';
 import { useErrors } from '../../context/hooks/useErrors';
 import { FormGroup } from '../../components/FormGroup';
 import { DefaultInput } from '../../components/Input/DefaultInput';
-import { Body1, BodyBlue, Header1, Header2 } from '../../styles/typography';
+import { Body1, Header1, Header2 } from '../../styles/typography';
 import { CodeError, FormatInputType } from '../../common/enums';
 import { ToastContext } from '../../context/ToastContext';
-import { useTheme } from 'styled-components';
 import { HandleInput } from '../../common/utils/format/formatInput';
 
 export function Login() {
-  const { colors: theme } = useTheme();
-
   const [password, setPassoword] = useState<string>('');
   const [showPassword, setShowPassword] = useState(false);
   const { addToast } = useContext(ToastContext);
@@ -26,7 +22,7 @@ export function Login() {
   const { handleLogin, messageError, errorEmail, errorPassword, setErrorEmail, setErrorPassword } =
     useAuthGlobal();
 
-  const { errors, setError, removeError, getErrorMessageByFieldName } = useErrors();
+  const { setError, removeError, getErrorMessageByFieldName } = useErrors();
   const isFormValid = email && password;
 
   const handleShowPassword = () => {
@@ -78,11 +74,6 @@ export function Login() {
       </Banner>
       <BoxLogin>
         <ContainerLogin>
-          {/* <BoxLanguage>
-          <LanguageSwitcher />
-        </BoxLanguage> */}
-          <img src={elgin} alt="elgin-logo" />
-
           <WelcomeText>
             <Header2>Olá!</Header2>
             <Body1>Preencha os campos de login para acessar o sistema.</Body1>
