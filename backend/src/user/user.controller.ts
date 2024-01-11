@@ -26,7 +26,7 @@ export class UserController {
   constructor(private readonly userService: UserService) {}
 
   @Post()
-  @UseGuards(PermissionGuard(Permission.User.CREATE))
+  @IgnoreJwtGuard()
   async create(@Body() createUserDto: CreateUserDto): Promise<User> {
     return this.userService.create(createUserDto);
   }

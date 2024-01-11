@@ -146,7 +146,6 @@ export class UserService {
 
     const userBuilder = this.userRepository
       .createQueryBuilder('user')
-
       .leftJoinAndSelect('user.profile', 'profile');
 
     if (search_name) {

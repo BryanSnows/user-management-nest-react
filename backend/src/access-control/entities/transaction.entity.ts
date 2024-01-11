@@ -8,7 +8,7 @@ import {
 } from 'typeorm';
 import { ProfileEntity } from './profile.entity';
 
-@Entity('transaction')
+@Entity({ name: 'transaction', schema: 'postgres' })
 export class TransactionEntity {
   @PrimaryGeneratedColumn()
   transaction_id: number;

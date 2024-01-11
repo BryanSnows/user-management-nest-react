@@ -1,6 +1,6 @@
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
-@Entity('profile_transaction')
+@Entity({ name: 'profile_transaction', schema: 'postgres' })
 export class ProfileTransactionEntity {
   @PrimaryGeneratedColumn()
   profile_transaction_id?: number;

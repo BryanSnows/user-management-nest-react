@@ -9,7 +9,7 @@ import {
 import { TransactionEntity } from './transaction.entity';
 import { User } from '../../user/entities/user.entity';
 
-@Entity('profile')
+@Entity({ name: 'profile', schema: 'postgres' })
 export class ProfileEntity {
   @PrimaryGeneratedColumn()
   profile_id: number;
@@ -22,7 +22,7 @@ export class ProfileEntity {
 
   @ManyToMany(() => TransactionEntity, { eager: true })
   @JoinTable({
-    name: 'PROFILE_TRANSACTION',
+    name: 'profile_transaction',
     joinColumn: {
       name: 'profile_id',
       referencedColumnName: 'profile_id',

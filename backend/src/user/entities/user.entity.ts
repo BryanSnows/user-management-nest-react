@@ -7,7 +7,7 @@ import {
 } from 'typeorm';
 import { ProfileEntity } from '../../access-control/entities/profile.entity';
 
-@Entity('user')
+@Entity({ name: 'user', schema: 'postgres' })
 export class User {
   @PrimaryGeneratedColumn()
   user_id: number;
