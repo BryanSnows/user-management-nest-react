@@ -16,7 +16,6 @@ import { AccessControlModule } from './access-control/access-control.module';
     AuthModule,
     AccessControlModule,
     UserModule,
-    JwtAuthGuard,
   ],
 
   providers: [
