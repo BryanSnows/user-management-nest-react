@@ -1,9 +1,13 @@
 export interface ITableData {
-  user_email?: string;
-  user_name?: string;
-  profile_name?: string;
-  user_status?: boolean;
-  user_id?: number;
+  user_id: number;
+  user_name: string;
+  user_surname: string;
+  user_email: string;
+  profile_id: number;
+  profile: {
+    profile_id: number;
+    profile_name: string;
+  };
 }
 
 export interface IProfileObject {

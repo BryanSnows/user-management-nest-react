@@ -54,7 +54,7 @@ export function NewUser() {
       profile_id: profile?.id,
     };
 
-    await Api.post('users', body)
+    await Api.post('user', body)
 
       .then(async (res) => {
         addToast({

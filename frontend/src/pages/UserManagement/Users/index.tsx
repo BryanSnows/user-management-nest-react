@@ -35,7 +35,7 @@ export function Users() {
       params.append('limit', '10');
       params.append('orderBy', 'NAME');
       params.append('sort', 'ASC');
-      return Api.get('users', { params });
+      return Api.get('user', { params });
     },
     {
       onSuccess: (dataOnSuccess) => {
@@ -51,7 +51,7 @@ export function Users() {
     return {
       user_email: item?.user_email,
       user_name: item?.user_name,
-      user_profile: item?.profile_name,
+      user_profile: item?.profile.profile_name,
       user_id: item?.user_id,
     };
   });
@@ -81,24 +81,6 @@ export function Users() {
     },
   ];
 
-  function changeStatusRequest() {
-    Api.patch(`users/status/${user?.user_id}`)
-      .then((res) => {
-        addToast({
-          status: 'success',
-          title: `Usuário ${res.data.user_status ? 'ativado' : 'desativado'} com sucesso.`,
-        });
-        refetch();
-        setModalActiveUser(false);
-      })
-      .catch((err) => {
-        addToast({
-          status: 'error',
-          title: 'Ocorreu um erro.',
-        });
-      });
-  }
-
   function handleEdit(user: IUserTableRow) {
     setUser(user);
     setModalEditUser(!modalEditUser);
@@ -113,21 +95,6 @@ export function Users() {
 
   return (
     <>
-      <ModalConfirm
-        isModalActive={modalActiveUser}
-        handleCancel={() => setModalActiveUser(false)}
-        handleClose={() => {
-          refetch();
-          setModalActiveUser(false);
-        }}
-        handleSubmit={changeStatusRequest}
-        title={`${statusMessage ? 'Desativar' : 'Ativar'} usuário?`}
-        message={
-          statusMessage
-            ? 'Usuário será desativado e estará disponível na aba de Inativos. Deseja continuar?'
-            : 'Usuário será reativado e estará disponível na aba de Ativos. Deseja continuar?'
-        }
-      />
       <ModalEditUser
         isModalActive={modalEditUser}
         closeModal={() => {
@@ -141,9 +108,7 @@ export function Users() {
         buttonText="Novo Usuário"
         buttonPath="/user-management/users/new"
         canCreate={canCreateUser}
-        showOnOff={true}
-        onOff={onOff}
-        setOnOff={setOnOff}
+        showOnOff={false}
         pageParam={pageParam}
         setPageParam={setPageParam}
         setSearchParam={setSearchParam}
