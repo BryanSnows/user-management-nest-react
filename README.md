@@ -1,21 +1,54 @@
-# Projeto de Gerenciamento de Usuários
+# User Management Project
 
-## Visão Geral
+Este projeto é um sistema de gerenciamento de usuários desenvolvido com NestJS (backend) e ReactJS (frontend). Siga as instruções abaixo para executar o projeto localmente.
 
-Este projeto é um sistema de Gerenciamento de Usuários construído com NestJS e ReactJS. O backend, alimentado pelo NestJS, utiliza o Docker Compose para fácil implantação, enquanto o frontend, construído com ReactJS, pode ser iniciado usando o Yarn. A documentação Swagger para a API pode ser acessada em [http://localhost:3002/swagger/#/](http://localhost:3002/swagger/#/).
+## Backend (NestJS)
 
-## Pré-requisitos
+### Configurações do PostgreSQL
 
-Antes de executar o projeto, certifique-se de ter o seguinte instalado:
+Crie um arquivo `.env` no diretório `backend` com as seguintes configurações para o PostgreSQL:
 
-- [Docker](https://docs.docker.com/get-docker/)
-- [Docker Compose](https://docs.docker.com/compose/install/)
-- [Node.js](https://nodejs.org/) (para o Yarn)
-- [Yarn](https://yarnpkg.com/)
+```env
+DB_TYPE=postgres
+DB_HOST=localhost
+DB_PORT=5432
+DB_USERNAME=postgres
+DB_PASSWORD=3663
+DB_DATABASE=postgres
 
-## Configuração do Backend
 
-1. Navegue até o diretório do backend:
+Instruções de Execução
+bash
+Copy code
+cd backend
+docker-compose up
 
-   ```bash
-   cd backend
+
+# O backend estará disponível em http://localhost:3002.
+
+#O Swagger estará disponível em http://localhost:3002/swagger/#/.
+
+Credenciais de Admin
+Email: bryan@email.com
+Senha: 36638947
+SQL Schema
+O arquivo SQL do esquema de dados está localizado em backend/src/config/database/schema.sql.
+
+Frontend (ReactJS)
+Requisitos
+Certifique-se de ter o Node.js e o Yarn instalados em seu ambiente.
+
+Instruções de Execução
+
+bash
+Copy code
+cd frontend
+yarn install
+yarn start
+
+#O frontend estará disponível em http://localhost:3000.
+
+#Agora você pode acessar e interagir com o sistema de gerenciamento de usuários.
+
+##Observação: Certifique-se de ter o backend em execução antes de iniciar o frontend.
+
