@@ -37,14 +37,7 @@ export enum CodeError {
 export enum PathName {
   'home' = 'Home',
   'user-management' = 'Gestão de Usuários',
-  'dashboard' = 'Dashboard',
-  'report' = 'Relatório',
   'profiles' = 'Controle de Acesso',
-  'production' = 'Cadastro de Produção',
-  'process' = 'Execução de Meta',
-  'goal' = 'Planejamento de Metas',
-  'productivity' = 'Produtividade',
-  'machine-monitoring' = 'Monitoramento de Máquina',
 }
 
 export enum Situation {
@@ -57,25 +50,7 @@ export enum Situation {
 }
 
 export enum FormatInputType {
-  MACHINE_NAME = 'machine_name',
-  MACHINE_IP = 'machine_ip',
-  PIPE_CODE = 'pipe_code',
-  PIPE_NAME = 'pipe_name',
-  PIPE_LENGTH = 'pipe_length',
-  PIPE_DIAMETER = 'pipe_diameter',
-  PIPE_BENDS = 'pipe_bends',
-  PRODUCTION_GOAL_ORDER = 'production_goal_order',
   PROFILE_NAME = 'profile_name',
   USER_NAME = 'user_name',
   USER_EMAIL = 'user_email',
-  PRODUCTION_GOAL_EXPECTED = 'production_goal_expected',
-  DAILY_PRODUCTION_GOAL = 'daily_production_goal',
-  PIPE_BOTTOM = 'pipe_model_bottom_margin',
-  PIPE_TOP = 'pipe_model_top_margin',
-  PIPE_REFERENCE = 'pipe_model_reference',
-}
-
-export enum FileTypesEnum {
-  '.pdf' = 'application/pdf',
-  '.xlsx' = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
 }
