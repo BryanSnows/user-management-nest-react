@@ -22,8 +22,11 @@ export function NewUser() {
   const { addToast } = useContext(ToastContext);
   const [profile, setProfile] = useState<ISelectCurrentValue | null>(null);
   const [userName, setUserName] = useState('');
+  const [userSurname, setUserSurname] = useState('');
   const [userEmail, setUserEmail] = useState('');
+  const [userPassword, setUserPassword] = useState('');
   const [isModalConfirmOpen, setIsModalConfirmOpen] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
 
   const { errors, setError, removeError, getErrorMessageByFieldName } = useErrors();
   const navigate = useNavigate();
@@ -31,7 +34,7 @@ export function NewUser() {
   const isFormValid = errors.length === 0 && userName && userEmail && profile;
 
   const { data, isLoading: profileLoading } = useQuery(['profile'], () => {
-    return Api.get('/profile/profilesTrue', {});
+    return Api.get('/user/profile', {});
   });
 
   const profilesList = data?.data?.map((item: { profile_id: number; profile_name: string }) => ({
@@ -52,6 +55,8 @@ export function NewUser() {
       user_name: userName,
       user_email: userEmail,
       profile_id: profile?.id,
+      user_surname: userSurname,
+      user_password: userPassword,
     };
 
     await Api.post('user', body)
@@ -121,6 +126,31 @@ export function NewUser() {
               <Information1>Mín. 4 Máx. 40</Information1>
             </FormGroup>
 
+            <FormGroup error={getErrorMessageByFieldName('user-surname')} extraErrorMessage={['']}>
+              <DefaultInput
+                error={getErrorMessageByFieldName('user-surname')}
+                label={'Sobrenome *'}
+                id="user-surname"
+                type="text"
+                key={'user-surname'}
+                value={userSurname}
+                width="100%"
+                maxLength={40}
+                onChange={(event) =>
+                  HandleInput.getInstance().formatWithRegex(
+                    event,
+                    FormatInputType.USER_NAME,
+                    setUserSurname,
+                    setError,
+                    removeError,
+                    'user-surname',
+                  )
+                }
+                placeholder="Inserir sobrenome"
+              />
+              <Information1>Mín. 4 Máx. 40</Information1>
+            </FormGroup>
+
             <FormGroup error={getErrorMessageByFieldName('profile')} extraErrorMessage={['']}>
               <AsynchronousSelect
                 error={getErrorMessageByFieldName('profile') ? true : false}
@@ -157,17 +187,21 @@ export function NewUser() {
               />
             </FormGroup>
 
-            {/* <FormGroup>
+            <FormGroup error={getErrorMessageByFieldName('user-password')} extraErrorMessage={['']}>
               <DefaultInput
                 label={'Senha *'}
-                id="password"
-                value={password}
+                id="email"
+                value={userPassword}
+                type="password"
                 width="100%"
-                maxLength={12}
-                minLength={6}
-                disabled={true}
+                onChange={(event) => setUserPassword(event.target.value)}
+                placeholder="Inserir senha"
+                toggleShowPassword={() => {
+                  setShowPassword(!showPassword);
+                }}
+                showPassword={showPassword}
               />
-            </FormGroup> */}
+            </FormGroup>
 
             <Information2>(*) Obrigatório</Information2>
           </CreateUserWrapper>
