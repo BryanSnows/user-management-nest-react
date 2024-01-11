@@ -79,6 +79,8 @@ export class UserService {
 
     Validations.getInstance().verifyLength(user.user_name, 'user_name', 4, 40);
 
+    user.user_surname = user_surname.toUpperCase().trim();
+
     Validations.getInstance().validateWithRegex(
       user.user_surname,
       'user_surname',
@@ -252,7 +254,7 @@ export class UserService {
     }
 
     if (user_surname) {
-      user.user_surname = user_surname;
+      user.user_surname = user_surname.toUpperCase().trim();
 
       Validations.getInstance().validateWithRegex(
         user.user_surname,

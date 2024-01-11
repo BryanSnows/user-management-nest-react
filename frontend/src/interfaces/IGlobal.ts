@@ -6,6 +6,7 @@ export interface ILogin {
 export interface IUser {
   user_id?: number;
   user_name: string;
+  user_surname: string;
   user_email: string;
   profile_id: number;
   user_password?: string;

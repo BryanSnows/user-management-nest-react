@@ -25,8 +25,11 @@ export function ModalEditUser({ isModalActive, closeModal, keyId }: ModalProps) 
   const [isModalConfirmOpen, setIsModalConfirmOpen] = useState(false);
   const [profile, setProfile] = useState<IProfileObject | null>(null);
   const [userName, setUserName] = useState('');
+  const [userSurname, setUserSurname] = useState('');
   const [userEmail, setUserEmail] = useState('');
+  const [userPassword, setUserPassword] = useState('');
   const [id, setId] = useState<number | undefined>(0);
+  const [showPassword, setShowPassword] = useState(false);
   const [isOutsideClick, setIsOutsideClick] = useState(false);
   const modalRef = useRef<HTMLDivElement | null>(null);
   const modalRoot = document.getElementById('modal') as HTMLElement;
@@ -69,6 +72,7 @@ export function ModalEditUser({ isModalActive, closeModal, keyId }: ModalProps) 
     onSuccess: (dataOnSuccess) => {
       if (isModalActive) {
         setUserName(dataOnSuccess?.user_name);
+        setUserSurname(dataOnSuccess?.user_surname);
         setUserEmail(dataOnSuccess?.user_email);
         setProfile({
           id: dataOnSuccess?.profile?.profile_id,
@@ -87,6 +91,7 @@ export function ModalEditUser({ isModalActive, closeModal, keyId }: ModalProps) 
   const isFormValid =
     errors.length === 0 &&
     (userName?.toUpperCase() !== data?.user_name ||
+      userSurname?.toUpperCase() !== data?.user_surname ||
       userEmail !== data?.user_email ||
       profile?.id !== data?.profile?.profile_id);
 
@@ -126,10 +131,11 @@ export function ModalEditUser({ isModalActive, closeModal, keyId }: ModalProps) 
       user_name: userName,
       user_email: userEmail,
       profile_id: profile?.id,
+      user_surname: userSurname,
     };
 
     try {
-      await Api.put(`users/${keyId}`, payload);
+      await Api.put(`user/${keyId}`, payload);
       addToast({
         status: 'success',
         title: 'Dados salvos com sucesso.',
@@ -201,6 +207,31 @@ export function ModalEditUser({ isModalActive, closeModal, keyId }: ModalProps) 
                     'user-name',
                   )
                 }
+              />
+              <Information1>Mín. 4 Máx. 40</Information1>
+            </FormGroup>
+
+            <FormGroup error={getErrorMessageByFieldName('user-surname')} extraErrorMessage={['']}>
+              <DefaultInput
+                error={getErrorMessageByFieldName('user-surname')}
+                label={'Sobrenome *'}
+                id="user-surname"
+                type="text"
+                key={'user-surname'}
+                value={userSurname}
+                width="100%"
+                maxLength={40}
+                onChange={(event) =>
+                  HandleInput.getInstance().formatWithRegex(
+                    event,
+                    FormatInputType.USER_NAME,
+                    setUserSurname,
+                    setError,
+                    removeError,
+                    'user-surname',
+                  )
+                }
+                placeholder="Inserir sobrenome"
               />
               <Information1>Mín. 4 Máx. 40</Information1>
             </FormGroup>

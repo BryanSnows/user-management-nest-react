@@ -28,7 +28,7 @@ export function useAuth(
         setTokenLocalStorage(response.data.access_token);
         setRefreshTokenLocalStorage(response.data.refresh_token);
         setEmailLocalStorage(response.data.email);
-        setProfileLocalStorage(response.data.profile_name);
+        setProfileLocalStorage(response.data.profile.profile_name);
         setUserNameLocalStorage(response.data.name);
         localStorage.setItem('is_logged_in', 'true');
         localStorage.removeItem('email');
