@@ -55,6 +55,8 @@
     "pdf-lib": "^1.17.1",
     "pdf-parse": "^1.1.1",
     "pdfkit": "^0.13.0",
+    "pg": "^8.11.3",
+    "postgres": "^3.4.3",
     "reflect-metadata": "^0.1.13",
     "rxjs": "^7.2.0",
     "socket.io": "^2.4.0",
