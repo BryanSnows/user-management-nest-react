@@ -1,6 +1,7 @@
 import { Routes } from '@angular/router';
 
 import { LoginComponent } from './login.component';
+import { SignInComponent } from './sign-in/sign-in.component';
 
 export const loginRoute: Routes = [
   {
@@ -10,6 +11,10 @@ export const loginRoute: Routes = [
       roles: [],
     },
     children: [
+      {
+        path: '',
+        component: SignInComponent,
+      },
       {
         path: '**',
         redirectTo: '/',
