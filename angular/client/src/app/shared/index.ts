@@ -4,8 +4,6 @@ export * from './services/crud.service';
 export * from './services/location.service';
 export * from './auth/auth.service';
 export * from './auth/user.service';
-export * from './auth/user-route-access-service';
-export * from './auth/menu-access-roles';
 export * from './directives/space-validator.directive';
 export * from './directives/special-characters-validator.directive';
 export * from './directives/only-numbers.directive';

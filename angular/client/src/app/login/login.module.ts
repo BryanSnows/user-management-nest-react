@@ -6,17 +6,15 @@ import {
   LoginComponent,
   SignInComponent,
   loginRoute,
-  LoginService,
 } from '.';
 import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [
     LoginComponent,
-    SignInComponent,
-    SignInComponent,
+    SignInComponent
   ],
   imports: [CommonModule, SharedModule, RouterModule.forChild(loginRoute)],
-  providers: [LoginService],
+  providers: [],
 })
 export class LoginModule {}

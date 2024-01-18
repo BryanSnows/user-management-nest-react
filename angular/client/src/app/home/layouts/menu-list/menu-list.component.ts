@@ -1,7 +1,7 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { UserService, MenuAccessRoles } from '../../../shared';
+import { UserService } from '../../../shared';
 
 @Component({
   selector: 'app-menu-list',
@@ -49,9 +49,5 @@ export class MenuListComponent implements OnInit {
     }
   }
 
-  hasAccess(menu: string) {
-    return (
-      MenuAccessRoles[menu] && MenuAccessRoles[menu].includes(this.user.role)
-    );
-  }
+
 }

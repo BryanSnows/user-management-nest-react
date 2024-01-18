@@ -52,9 +52,7 @@ export class DynamicLocaleId extends String {
     }),
   ],
   providers: [
-    // Provider to update angular components locale id based on translate service
     { provide: LOCALE_ID, useClass: DynamicLocaleId, deps: [TranslateService] },
-    // same across all app
     DatePipe,
     LoadService,
   ],

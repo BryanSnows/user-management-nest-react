@@ -37,9 +37,11 @@ export class AuthService {
     this.userService.storeAuthenticationUser(user);
   }
 
+
+  
   login(credentials: any): Observable<any> {
     return this.apiService
-      .post('/auth/login', credentials, undefined, true)
+      .post('/auth/login', credentials)
       .pipe(map(authenticateSuccess.bind(this)));
 
     function authenticateSuccess(this: any, resp: any) {

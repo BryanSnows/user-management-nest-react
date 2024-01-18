@@ -1,8 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { UserRouteAccessService } from './shared';
-
 const routes: Routes = [
   {
     path: 'login',
@@ -11,7 +9,6 @@ const routes: Routes = [
   },
   {
     path: '',
-    canLoad: [UserRouteAccessService],
     loadChildren: () => import('./home/home.module').then((m) => m.HomeModule),
   },
   {

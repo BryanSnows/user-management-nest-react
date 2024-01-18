@@ -36,7 +36,7 @@ export class SignInComponent {
 
   login() {
     this.loadService.emitLoadEvent(true);
-
+  
     this.authService.login(this.parseCredentials()).subscribe({
       next: (data) => {
         setTimeout(() => {
@@ -46,7 +46,7 @@ export class SignInComponent {
       },
       error: (error) => {
         this.loadService.emitLoadEvent(false);
-
+  
         if (error.status === 401) {
           this.email.control.setErrors({ credentials: true });
           this.password.control.setErrors({ credentials: true });
