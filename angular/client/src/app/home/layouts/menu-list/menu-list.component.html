@@ -1,0 +1,64 @@
+<mat-nav-list class="no-print">
+  <mat-list-item class="menu-icon-list-item">
+    <button mat-icon-button (click)="toggleMenu()">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <img
+      src="../../../../assets/images/brand-guideme.png"
+      alt="Guide Me"
+      *ngIf="menuOpen"
+    />
+  </mat-list-item>
+
+  <mat-list-item
+    (click)="toggleMenuMobile()"
+    class="user-list-item"
+    [ngClass]="{ 'options-height': menuOpen }"
+    routerLink="/account"
+    routerLinkActive="active"
+  >
+    <div>
+      <div
+        class="img-container"
+        [ngClass]="{ 'img-container-margin': !menuOpen }"
+      >
+        <img crossorigin="anonymus" src="{{ userImage }}" alt="User" />
+      </div>
+
+      <div>
+        <p *ngIf="menuOpen" class="username-label">
+          {{ user.name }}
+        </p>
+      </div>
+    </div>
+  </mat-list-item>
+
+  <mat-list-item
+    (click)="toggleMenuMobile()"
+    routerLink="/welcome"
+    routerLinkActive="active"
+    class="menu-list-item"
+  >
+    <mat-icon>home</mat-icon>
+    <p *ngIf="menuOpen">{{ 'general.home' | translate }}</p>
+  </mat-list-item>
+
+  <mat-list-item
+    (click)="toggleMenuMobile()"
+    routerLink="/user"
+    routerLinkActive="active"
+    class="menu-list-item"
+  >
+    <mat-icon>account_circle</mat-icon>
+    <p *ngIf="menuOpen">{{ 'user.users' | translate }}</p>
+  </mat-list-item>
+  <mat-list-item
+    (click)="toggleMenuMobile()"
+    routerLink="/charts"
+    routerLinkActive="active"
+    class="menu-list-item"
+  >
+    <mat-icon>bar_chart</mat-icon>
+    <p *ngIf="menuOpen">{{ 'charts.charts' | translate }}</p>
+  </mat-list-item>
+</mat-nav-list>

@@ -1,0 +1,44 @@
+<div mat-dialog-title>
+  <div>
+    <h2 class="form-title">{{ title | translate }}</h2>
+    <div class="divider"></div>
+  </div>
+  <div class="close-container">
+    <button mat-icon-button aria-label="Close" (click)="onCancel()">
+      <mat-icon color="primary">close</mat-icon>
+    </button>
+  </div>
+</div>
+
+<div mat-dialog-content>
+  <image-cropper
+    class="cropper-container"
+    [imageChangedEvent]="imageChangedEvent"
+    (imageLoaded)="imageLoaded($event)"
+    [aspectRatio]="1 / 1"
+    (imageCropped)="imageCropped($event)"
+    (cropperReady)="cropperReady()"
+    (loadImageFailed)="loadImageFailed()"
+    [roundCropper]="true"
+    [imageQuality]="70"
+    [onlyScaleDown]="true"
+    [cropperMinHeight]="400"
+    [cropperMinWidth]="400"
+  ></image-cropper>
+</div>
+<div mat-dialog-actions>
+  <button
+    *ngIf="hasCancel"
+    class="btn btn-hollow btn-lg cancel-btn"
+    (click)="onCancel()"
+  >
+    {{ 'general.cancel' | translate }}
+  </button>
+  <button
+    class="btn btn-primary btn-lg confirm-btn"
+    type="submit"
+    (click)="onConfirm()"
+  >
+    {{ 'general.confirm' | translate }}
+  </button>
+</div>

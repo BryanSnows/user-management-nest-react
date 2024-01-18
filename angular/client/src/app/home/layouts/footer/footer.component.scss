@@ -1,0 +1,36 @@
+@import '_variables';
+
+.footer {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  flex-direction: column;
+  margin-right: 4%;
+  margin-bottom: 30px;
+  background-color: transparent;
+  font-size: $font-size-xs;
+  color: $color-text-dark;
+
+  .developed-by {
+    a {
+      margin-right: 3px;
+      vertical-align: middle;
+
+      img {
+        margin-top: 3px;
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .footer {
+    display: none;
+  }
+}
+
+@media (min-width: 2048px) {
+  .footer {
+    font-size: $font-size-sm;
+  }
+}

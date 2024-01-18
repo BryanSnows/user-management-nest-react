@@ -1,2 +1,24 @@
-<p>login works!</p>
-<h1>Login</h1>
+<div class="login-container">
+  <mat-card>
+    <img
+      alt="Guide Me"
+      class="logo"
+      src="../../../assets/images/welcome-page/guideme.svg"
+    />
+    <div class="login-card">
+      <router-outlet></router-outlet>
+    </div>
+    <div class="login-footer">
+      <app-version></app-version>
+      <div class="copyright">
+        <span>
+          {{ 'login.developed-by' | translate }}
+          <a href="https://www.indt.org.br/" target="_blank">
+            <img src="../../assets/images/brand-indt.svg" alt="INDT" />
+          </a>
+        </span>
+        <span>Copyright © 2022</span>
+      </div>
+    </div>
+  </mat-card>
+</div>

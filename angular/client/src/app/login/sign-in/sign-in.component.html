@@ -1,1 +1,95 @@
-<button>sing in</button>
+<div class="login-container">
+  <form class="login-form" #loginForm="ngForm">
+    <mat-form-field hideRequiredMarker appearance="outline">
+      <mat-label>{{ 'general.email' | translate }}</mat-label>
+      <input
+        matInput
+        noWhiteSpace
+        required
+        type="text"
+        maxlength="120"
+        name="email"
+        #email="ngModel"
+        [(ngModel)]="credentials.email"
+        (ngModelChange)="dataChanged()"
+        [pattern]="emailPattern"
+      />
+      <mat-error *ngIf="email.invalid && (email.dirty || email.touched)">
+        <div id="email-errors-pattern" *ngIf="email.errors?.['pattern']">
+          {{ 'error.field-invalid' | translate }}
+        </div>
+        <div id="email-errors-required" *ngIf="email.errors?.['required']">
+          {{ 'error.field-required' | translate }}
+        </div>
+        <div *ngIf="email.errors?.['credentials']">
+          {{ 'error.invalid-credentials' | translate }}
+        </div>
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field hideRequiredMarker appearance="outline">
+      <mat-label>{{ 'general.password' | translate }}</mat-label>
+      <input
+        matInput
+        required
+        type="text"
+        maxlength="64"
+        name="password"
+        #password="ngModel"
+        (ngModelChange)="dataChanged()"
+        [(ngModel)]="credentials.password"
+        [type]="hide ? 'password' : 'text'"
+        (keyup.enter)="loginForm.valid ? login() : false"
+        placeholder="{{ 'password.min-length' | translate }}"
+      />
+      <button
+        matSuffix
+        type="button"
+        mat-icon-button
+        (click)="hide = !hide"
+        [attr.aria-label]="'Hide password'"
+        [attr.aria-pressed]="hide"
+      >
+        <mat-icon color="primary">{{
+          hide ? 'visibility' : 'visibility_off'
+        }}</mat-icon>
+      </button>
+      <mat-error
+        *ngIf="password.invalid && (password.dirty || password.touched)"
+      >
+        <div
+          id="password-errors-required"
+          *ngIf="password.errors?.['required']"
+        >
+          {{ 'error.field-required' | translate }}
+        </div>
+        <div
+          id="password-errors-minlength"
+          *ngIf="password.errors?.['minlength']"
+        >
+          {{ 'error.field-minlength' | translate: { value: 6 } }}
+        </div>
+        <div *ngIf="password.errors?.['credentials']">
+          {{ 'error.invalid-credentials' | translate }}
+        </div>
+      </mat-error>
+    </mat-form-field>
+  </form>
+
+  <div class="login-options">
+    <mat-slide-toggle
+      name="rememberMe"
+      [(ngModel)]="credentials.rememberMe"
+      color="primary"
+      >{{ 'login.remember-me' | translate }}
+    </mat-slide-toggle>
+
+    <button
+      class="btn btn-primary btn-lg"
+      [disabled]="!loginForm.valid || loading"
+      (click)="login()"
+    >
+      {{ 'general.sign-in' | translate }}
+    </button>
+  </div>
+</div>

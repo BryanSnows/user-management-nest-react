@@ -1,0 +1,19 @@
+<mat-sidenav-container class="home-container" autosize>
+  <app-header (toggleMenuEvent)="toggleMenuMobile($event)"></app-header>
+
+  <mat-sidenav
+    #sidenav
+    mode="side"
+    opened="true"
+    class="no-print"
+    [ngClass]="menuOpen ? 'open-menu' : 'menu-collapsed'"
+  >
+    <app-menu-list (toggleMenuEvent)="toggleMenu($event)"></app-menu-list>
+  </mat-sidenav>
+
+  <div [ngClass]="{ 'home-content': routeActive !== '/welcome' }">
+    <router-outlet></router-outlet>
+  </div>
+
+  <app-footer></app-footer>
+</mat-sidenav-container>

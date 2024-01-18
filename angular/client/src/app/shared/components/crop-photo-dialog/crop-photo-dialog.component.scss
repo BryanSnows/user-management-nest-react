@@ -1,0 +1,68 @@
+@import 'variables';
+
+.close-container {
+  margin-top: -10px !important;
+}
+
+.mat-dialog-title {
+  display: flex;
+  justify-content: space-between;
+}
+
+.mat-dialog-content {
+  margin: auto;
+  background-color: $color-neutral-lightest !important;
+  max-height: fit-content;
+  overflow: hidden;
+}
+
+.cropper-container {
+  min-height: fit-content !important;
+  max-height: 400px !important;
+  max-width: 395px;
+  margin: auto;
+  --cropper-overlay-color: $color-neutral-lightest;
+}
+
+.close-container {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: -35px;
+  height: 30px;
+}
+
+.modal-content,
+.mat-dialog-input {
+  padding: 10px 0px;
+  line-height: 25px;
+}
+
+::ng-deep mat-form-field.mat-form-field {
+  .mat-form-field-flex {
+    max-height: 150px !important;
+  }
+}
+
+div.mat-dialog-actions {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding-bottom: 24px;
+
+  .cancel-btn,
+  .confirm-btn {
+    font-family: 'Satoshi-regular';
+    padding: 10px 45px;
+  }
+
+  .cancel-btn {
+    margin-right: 15px;
+  }
+}
+
+@media (max-width: 512px) {
+  .cancel-btn {
+    margin-right: 0;
+    margin-bottom: 15px;
+  }
+}

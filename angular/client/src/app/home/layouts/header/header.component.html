@@ -1,0 +1,18 @@
+<mat-toolbar class="no-print">
+  <div class="header-toolbar">
+    <button mat-icon-button class="menu-btn" (click)="toggleMenu()">
+      <mat-icon class="header-icons">menu</mat-icon>
+    </button>
+    <div>
+      <button
+        mat-icon-button
+        class="logout-btn"
+        matTooltip="{{ 'general.logout' | translate }}"
+        [matTooltipClass]="'tooltip-brand-primary'"
+        (click)="logout()"
+      >
+        <mat-icon class="header-icons">exit_to_app</mat-icon>
+      </button>
+    </div>
+  </div>
+</mat-toolbar>
