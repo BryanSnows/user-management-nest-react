@@ -46,7 +46,7 @@ export class AuthService {
     );
 
     const { access_token, refresh_token } = await this.getTokens(
-      userSaved.user_surname,
+      userSaved.user_email,
       userSaved.user_name,
       userSaved.profile_id,
       userSaved.profile.profile_name,
@@ -129,7 +129,6 @@ export class AuthService {
 
   async removeRefreshToken(email: string): Promise<any> {
     const user = await this.userService.findByEmail(email);
-
     if (!user) {
       throw new HttpException(
         'User with this email does not exist',
@@ -137,7 +136,12 @@ export class AuthService {
       );
     }
 
-    await this.userService.updateRefreshToken(user.user_id, null);
+    const updateLogoutToken = await this.userService.updateRefreshToken(user.user_id, null);
+
+    return {
+      message: `Usuário saiu do sistema`,
+      updateLogoutToken,
+    };
   }
 
   async getTokens(
