@@ -44,16 +44,20 @@ export class HeaderComponent implements OnInit {
         iconPath: '../../../../assets/images/icons/exclamation-icon.svg',
       },
     });
-
+  
     dialogRef.beforeClosed().subscribe((close) => {
       if (close) {
         this.authService.logout().subscribe({
-          next: () => this.router.navigate(['login']),
-          error: () => this.router.navigate(['login']),
+          next: () => {
+            this.router.navigate(['login']);
+          },
+          error: () => {
+            this.router.navigate(['login']); 
+          },
         });
       }
     });
-
+  
     return dialogRef.afterClosed();
   }
 

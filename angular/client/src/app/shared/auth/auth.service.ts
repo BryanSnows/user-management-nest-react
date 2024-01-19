@@ -57,7 +57,7 @@ export class AuthService {
   }
 
   logout() {
-    return this.apiService.post('/auth/logout', {}, undefined, true).pipe(
+    return this.apiService.post('/auth/logout', {}).pipe(
       map(clearStorage.bind(this)),
       catchError((_) => {
         clearStorage.bind(this)();
