@@ -1,0 +1,20 @@
+.custom-chart-container {
+    position: relative;
+    height: 400px;
+  }
+  
+  .custom-chart {
+    background-color: #0f0; // Cor das barras
+    border-radius: 8px;
+    border: 1px solid #f00; // Cor da borda das barras
+  }
+  
+  .custom-chart-legend {
+    color: #fff; // Cor do texto na legenda
+  }
+  
+  .custom-chart-tooltip {
+    background-color: #f00; // Cor de fundo do tooltip
+    border: 1px solid #0f0; // Cor da borda do tooltip
+    color: #fff; // Cor do texto do tooltip
+  }

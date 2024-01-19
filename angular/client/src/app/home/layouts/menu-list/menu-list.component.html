@@ -17,6 +17,15 @@
     class="menu-list-item"
   >
     <mat-icon>account_circle</mat-icon>
-    <p *ngIf="menuOpen">{{ 'user.users' | translate }}</p>
+    <p *ngIf="menuOpen">{{ 'Usuário'}}</p>
 </mat-list-item>
+<mat-list-item
+    (click)="toggleMenuMobile()"
+    routerLink="/dashboard"
+    routerLinkActive="active"
+    class="menu-list-item"
+  >
+    <mat-icon>bar_chart</mat-icon>
+    <p *ngIf="menuOpen">{{ 'Dashboard'}}</p>
+  </mat-list-item>
 </mat-nav-list>
